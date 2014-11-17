@@ -12,7 +12,9 @@ module Ixintui
     def self.base_data
       {
         appkey: app_key,
-        is_notif: 1
+        is_notif: 1,
+        click_action: 'open_app',
+        open_app: true
       }
     end
 

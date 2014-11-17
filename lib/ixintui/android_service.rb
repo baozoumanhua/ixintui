@@ -11,12 +11,5 @@ module Ixintui
     def self.app_secret_key
       Ixintui.options[:android_secret_key]
     end
-
-    def self.base_data
-      super.merge({
-        click_action: 'open_app',
-        open_app: true
-      })
-    end
   end
 end
