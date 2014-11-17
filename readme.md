@@ -28,4 +28,4 @@ Ixintui::IosService.push message: 'test'
 Ixintui::AndroidService.push message: 'test'
 ```
 
-Look [Document](http://www.ixintui.com/ddoc/doclist.php?f=3) for more information
+Read [Document](http://www.ixintui.com/ddoc/doclist.php?f=3) for more information
