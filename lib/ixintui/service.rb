@@ -33,7 +33,7 @@ module Ixintui
         raise ArgumentError, "click_action 参数可选值为：'open_app', 'open_url', 'intent'"
       end
 
-      raise ArgumentError, "app_key 未设置" if params[:app_key].blank?
+      raise ArgumentError, "app_key 未设置" if params[:appkey].blank?
     end
 
     def self.push(options = {})
