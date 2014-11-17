@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = gem.summary = "ixintui(www.ixintui.com) push service"
   gem.homepage      = "https://github.com/baozoumanhua/ixintui"
   gem.license       = "LGPL-3.0"
-  gem.files         = Dir['lib/*.rb']
+  gem.files         = `git ls-files`.split("\n")
   gem.name          = "ixintui"
   gem.require_paths = ["lib"]
   gem.version       = Ixintui::VERSION
