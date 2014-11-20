@@ -6,7 +6,7 @@
 Add ixintui to your gemfile
 
 ```
-gem 'ixintui', '~> 1.0.3'
+gem 'ixintui', '~> 1.0.4'
 ```
 
 ### Step 2

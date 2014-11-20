@@ -12,15 +12,13 @@ module Ixintui
     def self.base_data
       {
         appkey: app_key,
-        is_notif: 1,
-        click_action: 'open_app',
-        open_app: true
+        is_notif: 1
       }
     end
 
     def self.sign(params)
       data = Hash[params.sort]
-      string = data.to_json
+      string = JSON.dump(data)
       string += app_secret_key
       Digest::MD5.hexdigest(string)
     end
@@ -30,20 +28,21 @@ module Ixintui
       when 'open_app', 'open_url', 'intent'
         raise ArgumentError, "设置了 click_action 参数为 '#{params[:click_action]}' 但是没有设置 #{params[:click_action]} 参数" if params[params[:click_action].to_sym].blank?
       else
-        raise ArgumentError, "click_action 参数可选值为：'open_app', 'open_url', 'intent'"
+        params[:click_action] = 'open_app'
+        params[:open_app] = true
       end
 
       raise ArgumentError, "app_key 未设置" if params[:appkey].blank?
+      return params
     end
 
     def self.push(options = {})
       params = base_data.merge(options)
-      validates(params)
+      params = validates(params)
       params[:sign] = sign(params)
 
-      puts params.inspect
-      res = RestClient.post(server, params.to_json, :content_type => :json)
-      res.body
+      res = RestClient.post(server, JSON.dump(params), content_type: :json)
+      JSON.parse(res.body)
     end
   end
 end
